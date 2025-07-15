@@ -10,6 +10,11 @@ body {
     font-family: "Nunito Sans", Arial, sans-serif;
 }
 
+.homepage {
+    background-image: url('../img/rockss.jpg');
+    background-size: cover;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
