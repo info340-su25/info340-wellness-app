@@ -1,18 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Log</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log Mood</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
+  <body>
+    <nav>
+      <div id="company-name">
+        <a href="homepage.html">HuskyHealth Tracker</a>
+      </div>
+      <div id="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="log.html" aria-current="page">Log</a>
+        <a href="trends.html">Trends</a>
+        <a href="diary.html">Diary</a>
+      </div>
+    </nav>
 
-<body>
+    <main>
+      <h1>Log Your Mood</h1>
+      <form>
+        <label for="mood-rating">Mood Rating (1-10)</label>
+        <input
+          type="number"
+          id="mood-rating"
+          name="mood-rating"
+          min="1"
+          max="10"
+          placeholder="e.g. 7"
+        />
 
-  <p>Log mood here.</p>
+        <label for="mood-description">Mood Description</label>
+        <input
+          type="text"
+          id="mood-description"
+          name="mood-description"
+          placeholder="e.g. Happy, stressed, relaxed"
+        />
 
-</body>
-<html>
+        <label for="mood-notes">Notes</label>
+        <textarea
+          id="mood-notes"
+          name="mood-notes"
+          placeholder="Additional details about how you feel..."
+        ></textarea>
+
+        <label for="mood-date">Date & Time</label>
+        <input type="datetime-local" id="mood-date" name="mood-date" />
+
+        <button type="submit">Save Mood Log</button>
+      </form>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 HuskyHealth Tracker | Created by Team HuskyHealth</p>
+    </footer>
+  </body>
+</html>

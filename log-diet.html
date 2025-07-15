@@ -1,18 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
     <title>Log</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="css/style.css" />
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
+    <nav>
+      <div id="company-name">
+        <a href="homepage.html">HuskyHealth Tracker</a>
+      </div>
+      <div id="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="log.html" aria-current="page">Log</a>
+        <a href="trends.html">Trends</a>
+        <a href="diary.html">Diary</a>
+      </div>
+    </nav>
 
-  <p>Log diet here.</p>
+    <main>
+      <h1>Log Your Diet</h1>
+      <form>
+        <label for="meal-type">Meal Type</label>
+        <select id="meal-type" name="meal-type">
+          <option>Breakfast</option>
+          <option>Lunch</option>
+          <option>Dinner</option>
+          <option>Snack</option>
+        </select>
 
-</body>
-<html>
+        <label for="foods">Foods Eaten</label>
+        <textarea
+          id="foods"
+          name="foods"
+          placeholder="List what you ate..."
+        ></textarea>
+
+        <label for="calories">Calories</label>
+        <input
+          type="number"
+          id="calories"
+          name="calories"
+          placeholder="e.g. 450"
+        />
+
+        <label for="diet-date">Date & Time</label>
+        <input type="datetime-local" id="diet-date" name="diet-date" />
+
+        <button type="submit">Save Diet Log</button>
+      </form>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 HuskyHealth Tracker | Created by Team HuskyHealth</p>
+    </footer>
+  </body>
+</html>
