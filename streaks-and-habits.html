@@ -26,20 +26,27 @@
 
   <main>
     <h1>Streaks and Habits Tracker</h1>
-      <section>
-        <form>
-          <h2>Track Habits</h2>
+    <div class="flex-container">
+      <section class="left-sect">
+        <h1>Track Habits</h1>
+        <form class="half_form">
           <div>
             <label for="habit_name">Habit Name:</label> <input id="habit_name" placeholder="Working out, Drinking 2L Water, etc." type="text" name="habit">
-            <label for="habit_description">Description:</label> <input id="description_input" type="text" name="description">
+            <label for="habit_description">Description:</label>
+            <textarea class="form-control" id="description_input" placeholder = "Description of your habit" name="description"></textarea>
           </div>
           <div>
             <label for="comment_field">Comment:</label>
-            <textarea class="form-control" id="comment_field" name="comment"></textarea>
+            <textarea class="form-control" id="comment_field" placeholder = "Additional comments" name="comment"></textarea>
           </div>
-          <button type="submit" aria-label="Submit"><i class="submit_buttom"></i></button>
+          <button type="submit">Create New Habit</button>
         </form>
       </section>
+      <section class="right-sect">
+        <h1>Your current Streaks</h1>
+        <h1 class="streak">1</h1>
+      </section>
+    </div>
   </main>
 
 <footer>
