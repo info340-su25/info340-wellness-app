@@ -21,8 +21,12 @@ body {
 }
 
 #about-us .text {
-  color: white;
-  text-align: right;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: rgb(78, 23, 125);
+  padding: 2rem;
+  width: fit-content;
+  margin-left: auto;
+  border-radius: 0.5rem;
 }
 
 .elements {
