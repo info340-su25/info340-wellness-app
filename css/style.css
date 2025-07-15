@@ -10,9 +10,41 @@ body {
     font-family: "Nunito Sans", Arial, sans-serif;
 }
 
-.homepage {
+#about-us {
     background-image: url('../img/rockss.jpg');
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 4rem 2rem;
+    min-height: 300px;
+}
+
+#about-us .text {
+    color: white;
+    text-align: right;
+}
+
+.elements {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+
+.element img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.element p {
+    margin-top: 0.5rem;
 }
 
 nav {
