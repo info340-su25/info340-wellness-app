@@ -19,13 +19,27 @@
     <div id="nav-links">
       <a href="index.html">Dashboard</a>
       <a href="log.html">Log</a>
-      <a href="streaks-and-habits.html">Trends</a>
+      <a href="streaks-and-habits.html">Streaks and Habits</a>
       <a href="diary.html">Diary</a>
     </div>
   </nav>
 
   <main>
-    <h1>Trends</h1>
+    <h1>Streaks and Habits Tracker</h1>
+      <section>
+        <form>
+          <h2>Track Habits</h2>
+          <div>
+            <label for="habit_name">Habit Name:</label> <input id="habit_name" placeholder="Working out, Drinking 2L Water, etc." type="text" name="habit">
+            <label for="habit_description">Description:</label> <input id="description_input" type="text" name="description">
+          </div>
+          <div>
+            <label for="comment_field">Comment:</label>
+            <textarea class="form-control" id="comment_field" name="comment"></textarea>
+          </div>
+          <button type="submit" aria-label="Submit"><i class="submit_buttom"></i></button>
+        </form>
+      </section>
   </main>
 
 <footer>
