@@ -169,7 +169,6 @@ form button {
 
 .entry-section {
   flex: 1;
-  background-color: #eee;
 }
 
 .entry-deck {
@@ -198,6 +197,13 @@ form button {
   font-size: 0.75rem;
   padding: 0.25rem;
   margin-bottom: 0.5rem;
+}
+
+.calender-section {
+    flex-basis: 25%;
+    flex-grow: 0;
+    flex-shrink: 0;
+
 }
 
 footer {
