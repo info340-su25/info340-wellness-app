@@ -75,6 +75,14 @@ nav {
     border-bottom: .5rem solid white;
 }
 
+header {
+    text-align: center;
+    color: rgb(78, 23, 125);
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    background-color: #eee;
+}
+
 main {
     text-align: center;
     padding-bottom: 5rem;
@@ -106,6 +114,78 @@ main {
 
 .log-card:hover {
     background-color: rgb(49, 10, 83);
+}
+
+.card-deck {
+  display: flex;
+  height: 100%;
+}
+
+.form-section {
+    flex-basis: 25%;
+}
+
+form {
+    padding: 1rem;
+    margin: 1rem;
+}
+
+form label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+form button {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: rgb(78, 23, 125);
+    color: white;
+    border-radius: 10px;
+}
+
+.entry-section {
+    flex: 1;
+    background-color: #eee;
+}
+
+.entry-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.entry {
+    flex: 0 0 250px;
+    background-color: white;
+    margin: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.16),
+        0 1px 3px rgba(0, 0, 0, 0.23);
+}
+
+.entry h3 {
+    margin-bottom: 0;
+}
+
+.entry p{
+    padding: 0.5rem;
+}
+
+.entry time {
+    font-size: 0.75rem;
+    padding: 0.25rem;
+    margin-bottom: 0.5rem;
 }
 
 footer {
