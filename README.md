@@ -1,24 +1,12 @@
-# INFO 340 Project - UW Wellness Tracker
-Aarush Sharma, Isabel Saccone, Will Feng, Altti Koskinen
+# React + Vite
 
-This repository contains code for an interactive information web app, created for the _Client-Side Web Development_ course at the UW iSchool.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Overview
+Currently, two official plugins are available:
 
-Many college students struggle with maintaining healthy habits while managing their academic and social lives. While many wellness apps already exist, they are often overloaded with features and don't cater to the unqiue lifestyle of college students. This project focuses on delivering a more niche Wellness and Fitness tracker catered to college students, with features important to them specifically.
-Users will input personal wellness data, visualize their progress over time, and reflect on their experiences through a diary. Our goal is to build a simple yet useful student-centric app to help users organize and take control of their health.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Proposal Contents
+## Expanding the ESLint configuration
 
-The 'proposal.html' file contains
-- A problem/data domain description
-- A detailed app description
-- Links to wellness resources
-
-## Features
-
-All the data is also stored to allow users to view their trends across a quarter, for example.
-3 features: 
-- Goal input and tracker over time
-- A graph/calendar showing trends over time
-- A "diary" for more specific user logs
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
