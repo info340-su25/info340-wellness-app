@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router";
 import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import Diary from "./pages/Diary";
@@ -14,11 +14,15 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Dashboard />} />
-        <Route path="log" element={<LogMenu />} />
-        <Route path="log/sleep" element={<Sleep />} />
-        <Route path="log/diet" element={<Diet />} />
-        <Route path="log/exercise" element={<Exercise />} />
-        <Route path="log/mood" element={<Mood />} />
+
+        <Route path="log">
+          <Route index element={<LogMenu />} />
+          <Route path="sleep" element={<Sleep />} />
+          <Route path="diet" element={<Diet />} />
+          <Route path="exercise" element={<Exercise />} />
+          <Route path="mood" element={<Mood />} />
+        </Route>
+
         <Route path="streaks" element={<Streaks />} />
         <Route path="diary" element={<Diary />} />
         <Route path="*" element={<Dashboard />} />
