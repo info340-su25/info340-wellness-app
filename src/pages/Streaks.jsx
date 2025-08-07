@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Streaks() {
+export default function Streaks() {
     return (
         <>
             <h1>Streaks and Habits Tracker</h1>

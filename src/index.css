@@ -1,0 +1,254 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: rgb(78, 23, 125);
+  font-family: "Nunito Sans", Arial, sans-serif;
+}
+
+#about-us {
+  background-image: url("../img/rockss.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 4rem 2rem;
+  min-height: 300px;
+}
+
+#about-us .text {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: rgb(78, 23, 125);
+  padding: 2rem;
+  width: fit-content;
+  margin-left: auto;
+  border-radius: 0.5rem;
+}
+
+.elements {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.element img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.element p {
+  margin-top: 0.5rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #eadca0;
+}
+
+#company-name a {
+  margin: 0;
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: rgb(78, 23, 125);
+}
+
+#nav-links a {
+  margin-left: 1.25rem;
+  text-decoration: none;
+  transition: all 0.25s ease-out;
+}
+
+#nav-links a:hover,
+#nav-links a:focus,
+#nav-links a:active {
+  color: white;
+  border-bottom: 0.5rem solid white;
+}
+
+header {
+  text-align: center;
+  color: rgb(78, 23, 125);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  background-color: #eee;
+}
+
+main {
+  text-align: center;
+  padding-bottom: 5rem;
+}
+/* --- LOG HUB GRID --- */
+.log-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* mobile: 1 col */
+  gap: 1rem;
+  margin: 1.5rem;
+}
+
+/* ≥ 576 px → 2 columns */
+@media (min-width: 576px) {
+  .log-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ≥ 992 px → 4 columns */
+@media (min-width: 992px) {
+  .log-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.log-card {
+  background-color: rgb(78, 23, 125); /* deep purple */
+  color: #eadca0; /* gold */
+  text-decoration: none;
+  padding: 3rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.log-card:hover,
+.log-card:focus {
+  background-color: rgb(49, 10, 83);
+}
+
+.card-deck {
+  display: flex;
+  height: 100%;
+}
+
+.form-section {
+  flex-basis: 25%;
+}
+
+form {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+form button {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: rgb(78, 23, 125);
+  color: white;
+  border-radius: 10px;
+}
+
+.entry-section {
+  flex: 1;
+}
+
+.entry-deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.entry {
+  flex: 0 0 250px;
+  background-color: white;
+  margin: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+}
+
+.entry h3 {
+  margin-bottom: 0;
+}
+
+.entry p {
+  padding: 0.5rem;
+}
+
+.entry time {
+  font-size: 0.75rem;
+  padding: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.calender-section {
+    flex-basis: 25%;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+}
+
+footer {
+  background-color: #eadca0;
+  text-align: center;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0.5rem 0;
+  margin-top: auto;
+
+}
+
+.flex-container {
+  display:flex;
+}
+
+.left-sect, .right-sect {
+  flex: 1;
+  align-items: center; 
+}
+
+section form {
+  width: 100%;
+}
+
+.streak {
+  font-size: 200px
+}
+
+.flex-container {
+  display:flex;
+}
+
+.left-sect, .right-sect {
+  flex: 1;
+  align-items: center; 
+}
+
+section form {
+  width: 100%;
+}
+
+.streak {
+  font-size: 200px
+}
+

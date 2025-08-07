@@ -1,7 +1,6 @@
 import React from 'react';
-import Card from './components/Card'
 
-export function Diary() {
+export default function Diary() {
     return (
         <>
             <header>

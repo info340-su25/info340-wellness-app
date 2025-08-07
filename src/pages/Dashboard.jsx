@@ -1,7 +1,7 @@
 import React from 'react';
 
-export function Dashboard() {
-    return(
+export default function Dashboard() {
+    return (
         <>
             <h1>Welcome to the HuskyHealth Tracker!</h1>
             <section id="about-us">
