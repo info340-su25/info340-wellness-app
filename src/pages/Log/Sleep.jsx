@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router';
 
 export default function Sleep() {
     return(
@@ -39,7 +40,7 @@ export default function Sleep() {
                 <input type="date" id="sleep-date" name="sleep-date" />
 
                 <button type="submit">Save Sleep Log</button>
-                <NavLink to="/Log" className="button">Back</NavLink>
+                <NavLink to="/log" className="button">Back</NavLink>
             </form>
         </>
     );

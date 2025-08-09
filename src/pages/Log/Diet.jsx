@@ -33,7 +33,7 @@ export default function Diet() {
                 <input type="datetime-local" id="diet-date" name="diet-date" />
 
                 <button type="submit">Save Diet Log</button>
-                <NavLink to="/Log" className="button">Back</NavLink>
+                <NavLink to="/log" className="button">Back</NavLink>
             </form>
         </>
     );

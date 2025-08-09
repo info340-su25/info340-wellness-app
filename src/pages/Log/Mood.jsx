@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router';
 
 export default function Mood() {
     return(
@@ -34,7 +35,7 @@ export default function Mood() {
                 <input type="datetime-local" id="mood-date" name="mood-date" />
 
                 <button type="submit">Save Mood Log</button>
-                <NavLink to="/Log" className="button">Back</NavLink>
+                <NavLink to="/log" className="button">Back</NavLink>
             </form>
         </>
     );

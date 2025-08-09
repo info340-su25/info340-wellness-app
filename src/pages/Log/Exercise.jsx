@@ -40,7 +40,7 @@ export default function Exercise() {
                 <input type="datetime-local" id="exercise-date" name="exercise-date" />
 
                 <button type="submit">Save Exercise Log</button>
-                <NavLink to="/Log" className="button">Back</NavLink>
+                <NavLink to="/log" className="button">Back</NavLink>
             </form>
         </>
     );
