@@ -6,7 +6,7 @@ export default function Streaks() {
             <h1>Streaks and Habits Tracker</h1>
             <div className="flex-container">
             <section className="left-sect">
-                <h1>Track Habits</h1>
+                <h2>Track Habits</h2>
                 <form className="half_form">
                 <div>
                     <label for="habit_name">Habit Name:</label> 
@@ -21,9 +21,10 @@ export default function Streaks() {
                 <button type="submit">Create New Habit</button>
                 </form>
             </section>
+
             <section className="right-sect">
-                <h1>Your current Streaks</h1>
-                <h1 className="streak">1</h1>
+                <h2>Your current Streaks</h2>
+                <p className="streak">1</p>
             </section>
             </div>
         </>
