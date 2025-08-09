@@ -7,7 +7,7 @@ export default function Dashboard() {
             <section id="about-us">
                 <div className="text">
                     <h2>About Us</h2>
-                    <p>We are care about your health! Let us work with you to design the perfect health plan so you can live your best life.</p>
+                    <p>We care about your health! Let us work with you to design the perfect health plan so you can live your best life.</p>
                 </div>
             </section>
 

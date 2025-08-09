@@ -167,6 +167,14 @@ form button {
   border-radius: 10px;
 }
 
+.button {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: rgb(78, 23, 125);
+  color: white;
+  border-radius: 10px;
+}
+
 .entry-section {
   flex: 1;
 }
