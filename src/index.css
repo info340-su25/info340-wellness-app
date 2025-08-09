@@ -208,10 +208,9 @@ form button {
 }
 
 .calender-section {
-    flex-basis: 25%;
-    flex-grow: 0;
-    flex-shrink: 0;
-
+  flex-basis: 25%;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 footer {
@@ -223,16 +222,16 @@ footer {
   min-height: 100vh;
   padding: 0.5rem 0;
   margin-top: auto;
-
 }
 
 .flex-container {
-  display:flex;
+  display: flex;
 }
 
-.left-sect, .right-sect {
+.left-sect,
+.right-sect {
   flex: 1;
-  align-items: center; 
+  align-items: center;
 }
 
 section form {
@@ -240,16 +239,17 @@ section form {
 }
 
 .streak {
-  font-size: 200px
+  font-size: 200px;
 }
 
 .flex-container {
-  display:flex;
+  display: flex;
 }
 
-.left-sect, .right-sect {
+.left-sect,
+.right-sect {
   flex: 1;
-  align-items: center; 
+  align-items: center;
 }
 
 section form {
@@ -257,6 +257,11 @@ section form {
 }
 
 .streak {
-  font-size: 200px
+  font-size: 200px;
 }
 
+.log-card .material-icons,
+.log-card .material-symbols-outlined {
+  margin-right: 0.5rem;
+  vertical-align: -0.1em;
+}
