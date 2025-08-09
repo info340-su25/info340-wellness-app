@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import Diary from "./pages/Diary";
+import Diary from "./pages/Diary/Diary";
 import Streaks from "./pages/Streaks";
 import LogMenu from "./pages/Log/LogMenu";
 import Sleep from "./pages/Log/Sleep";

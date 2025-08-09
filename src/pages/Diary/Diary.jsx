@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import DiaryEntryForm from './DiaryEntryForm';
 
 export default function Diary() {
+
+    const [diaryTitle, setDiaryTitle] = useState(null);
+    const [diaryContent, setDiaryContent] = useState(null);
+
+    function diaryElementsCallback(diaryTitle, diaryContent) {
+        setDiaryTitle(diaryTitle);
+        setDiaryContent(diaryContent);
+    }
+
     return (
         <>
             <header>
@@ -11,14 +21,7 @@ export default function Diary() {
             </header>
 
             <div className="card-deck">
-                <section className="form-section">
-                    <form className="diary-form">
-                    <h2 className="text-small">Create an Entry</h2>
-                    <label for="entry-title">Title</label><input type="text" id="entry-title" name="title"></input>
-                    <label for="entry-content">Entry</label><textarea id="entry-content" name="content"></textarea>
-                    <button type="submit" aria-label="Submit">Add Entry</button>
-                    </form>
-                </section>
+                <DiaryEntryForm applyDiaryElementsCallback={diaryElementsCallback}/>
 
                 <section className="entry-section">
                     <div className="entry-deck">

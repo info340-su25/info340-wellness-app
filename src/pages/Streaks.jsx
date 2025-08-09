@@ -1,6 +1,8 @@
 import React from 'react';
 
 export default function Streaks() {
+
+
     return (
         <>
             <h1>Streaks and Habits Tracker</h1>
