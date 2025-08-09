@@ -11,7 +11,7 @@ body {
 }
 
 #about-us {
-  background-image: url("../img/rockss.jpg");
+  background-image: url("/img/rockss.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -19,15 +19,15 @@ export default function Dashboard() {
 
                 <div className="elements">
                     <div className="element">
-                        <img src="../img/diet.jpg" alt="Healthy meal"></img>
+                        <img src="/img/diet.jpg" alt="Healthy meal" />
                         <p>Diet</p>
                     </div>
                     <div className="element">
-                        <img src="../img/exercise.jpg" alt="Healthy meal"></img>
+                        <img src="/img/exercise.jpg" alt="Workout mat"></img>
                         <p>Exercise</p>
                     </div>
                     <div className="element">
-                        <img src="../img/sleep.jpg" alt="Healthy meal"></img>
+                        <img src="/img/sleep.jpg" alt="Bedside table"></img>
                         <p>Sleep</p>
                     </div>
                 </div>
