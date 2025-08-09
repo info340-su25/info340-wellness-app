@@ -1,37 +1,36 @@
-import React from 'react';
-
+// src/pages/Dashboard.jsx
 export default function Dashboard() {
-    return (
-        <>
-            <h1>Welcome to the HuskyHealth Tracker!</h1>
-            <section id="about-us">
-                <div className="text">
-                    <h2>About Us</h2>
-                    <p>We care about your health! Let us work with you to design the perfect health plan so you can live your best life.</p>
-                </div>
-            </section>
+  const ELEMENTS = [
+    { src: "/img/diet.jpg", alt: "Colorful healthy meal", label: "Diet" },
+    { src: "/img/exercise.jpg", alt: "Person exercising", label: "Exercise" },
+    { src: "/img/sleep.jpg", alt: "Cozy bed", label: "Sleep" },
+  ];
 
-            <section id="how-it-works">
-                <div className="text">
-                    <h2>How It Works</h2>
-                    <p>We combine three health elements:</p>
-                </div>
+  return (
+    <div>
+      <h1>Welcome to the HuskyHealth Tracker!</h1>
 
-                <div className="elements">
-                    <div className="element">
-                        <img src="/img/diet.jpg" alt="Healthy meal" />
-                        <p>Diet</p>
-                    </div>
-                    <div className="element">
-                        <img src="/img/exercise.jpg" alt="Workout mat"></img>
-                        <p>Exercise</p>
-                    </div>
-                    <div className="element">
-                        <img src="/img/sleep.jpg" alt="Bedside table"></img>
-                        <p>Sleep</p>
-                    </div>
-                </div>
-            </section>
-        </>
-    );
+      <section className="about-us">
+        <h2>About Us</h2>
+        <p>
+          We care about your health! Let us work with you to design the perfect
+          health plan so you can live your best life.
+        </p>
+      </section>
+
+      <section className="how-it-works">
+        <h2>How It Works</h2>
+        <p>We combine three health elements:</p>
+
+        <div className="elements">
+          {ELEMENTS.map((el) => (
+            <div className="element" key={el.label}>
+              <img src={el.src} alt={el.alt} />
+              <p>{el.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
 }
