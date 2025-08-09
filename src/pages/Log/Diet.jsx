@@ -1,40 +1,45 @@
-import React from 'react';
-import { NavLink } from 'react-router';
+import { useState } from "react";
 
 export default function Diet() {
-    return(
-        <>
-            <h1>Log Your Diet</h1>
-            <form>
-                <label for="meal-type">Meal Type</label>
-                <select id="meal-type" name="meal-type">
-                <option>Breakfast</option>
-                <option>Lunch</option>
-                <option>Dinner</option>
-                <option>Snack</option>
-                </select>
+  const [form, setForm] = useState({ meal: "", calories: "" });
+  const [entries, setEntries] = useState([]);
 
-                <label for="foods">Foods Eaten</label>
-                <textarea
-                id="foods"
-                name="foods"
-                placeholder="List what you ate..."
-                ></textarea>
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
 
-                <label for="calories">Calories</label>
-                <input
-                type="number"
-                id="calories"
-                name="calories"
-                placeholder="e.g. 450"
-                />
+  function handleSubmit(e) {
+    e.preventDefault();
+    setEntries([{ id: Date.now(), ...form }, ...entries]);
+    setForm({ meal: "", calories: "" });
+  }
 
-                <label for="diet-date">Date & Time</label>
-                <input type="datetime-local" id="diet-date" name="diet-date" />
+  return (
+    <main>
+      <h1>Diet</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Meal
+          <input name="meal" value={form.meal} onChange={handleChange} />
+        </label>
+        <label>
+          Calories
+          <input
+            name="calories"
+            value={form.calories}
+            onChange={handleChange}
+          />
+        </label>
+        <button>Add</button>
+      </form>
 
-                <button type="submit">Save Diet Log</button>
-                <NavLink to="/log" className="button">Back</NavLink>
-            </form>
-        </>
-    );
+      <ul>
+        {entries.map((e) => (
+          <li key={e.id}>
+            {e.meal} — {e.calories} kcal
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
 }
