@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router";
 import Layout from "./components/Layout";
-import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
 import Diary from "./pages/Diary";
 import Streaks from "./pages/Streaks";
 import LogMenu from "./pages/Log/LogMenu";
@@ -13,7 +13,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Dashboard />} />
+        <Route index element={<Home />} />
 
         <Route path="log">
           <Route index element={<LogMenu />} />
@@ -25,7 +25,7 @@ export default function App() {
 
         <Route path="streaks" element={<Streaks />} />
         <Route path="diary" element={<Diary />} />
-        <Route path="*" element={<Dashboard />} />
+        <Route path="*" element={<Home />} />
       </Route>
     </Routes>
   );

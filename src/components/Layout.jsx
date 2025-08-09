@@ -8,7 +8,7 @@ export default function Layout() {
           <NavLink to="/">HuskyHealth Tracker</NavLink>
         </div>
         <div id="nav-links">
-          <NavLink to="/">Dashboard</NavLink>
+          <NavLink to="/">Home</NavLink>
           <NavLink to="/log">Log</NavLink>
           <NavLink to="/streaks">Streaks</NavLink>
           <NavLink to="/diary">Diary</NavLink>

@@ -1,5 +1,4 @@
-// src/pages/Dashboard.jsx
-export default function Dashboard() {
+export default function Home() {
   const ELEMENTS = [
     { src: "/img/diet.jpg", alt: "Colorful healthy meal", label: "Diet" },
     { src: "/img/exercise.jpg", alt: "Person exercising", label: "Exercise" },
