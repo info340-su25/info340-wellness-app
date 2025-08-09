@@ -103,13 +103,7 @@ main {
   .log-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-/* ≥ 992 px → 4 columns */
-@media (min-width: 992px) {
-  .log-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 
 .log-card {
@@ -133,6 +127,7 @@ main {
 .card-deck {
   display: flex;
   height: 100%;
+  flex-direction: column;
 }
 
 .form-section {
@@ -264,4 +259,15 @@ section form {
 .log-card .material-symbols-outlined {
   margin-right: 0.5rem;
   vertical-align: -0.1em;
+}
+
+/* ≥ 992 px → 4 columns */
+@media (min-width: 992px) {
+  .log-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .card-deck {
+    flex-direction: row;
+  }
 }
