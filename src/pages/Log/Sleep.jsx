@@ -1,46 +1,41 @@
-import React from 'react';
+import { useState } from "react";
 
 export default function Sleep() {
-    return(
-        <>
-            <h1>Log Your Sleep</h1>
-            <form>
-                <label for="sleep-hours">Hours Slept</label>
-                <input
-                type="number"
-                id="sleep-hours"
-                name="sleep-hours"
-                placeholder="e.g. 7.5"
-                step="0.1"
-                />
+  const [form, setForm] = useState({ hours: "", quality: "" });
+  const [entries, setEntries] = useState([]);
 
-                <label for="bedtime">Bedtime</label>
-                <input type="time" id="bedtime" name="bedtime" />
+  function handleChange(event) {
+    setForm({ ...form, [event.target.name]: event.target.value });
+  }
 
-                <label for="wake-time">Wake-up Time</label>
-                <input type="time" id="wake-time" name="wake-time" />
+  function handleSubmit(event) {
+    event.preventDefault();
+    setEntries([{ id: Date.now(), ...form }, ...entries]);
+    setForm({ hours: "", quality: "" });
+  }
 
-                <label for="sleep-quality">Sleep Quality</label>
-                <select id="sleep-quality" name="sleep-quality">
-                <option>Excellent</option>
-                <option>Good</option>
-                <option>Fair</option>
-                <option>Poor</option>
-                </select>
+  return (
+    <main>
+      <h1>Sleep</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Hours
+          <input name="hours" value={form.hours} onChange={handleChange} />
+        </label>
+        <label>
+          Quality (1-5)
+          <input name="quality" value={form.quality} onChange={handleChange} />
+        </label>
+        <button>Add</button>
+      </form>
 
-                <label for="sleep-notes">Notes</label>
-                <textarea
-                id="sleep-notes"
-                name="sleep-notes"
-                placeholder="Additional details..."
-                ></textarea>
-
-                <label for="sleep-date">Date</label>
-                <input type="date" id="sleep-date" name="sleep-date" />
-
-                <button type="submit">Save Sleep Log</button>
-                <NavLink to="/Log" className="button">Back</NavLink>
-            </form>
-        </>
-    );
+      <ul>
+        {entries.map((e) => (
+          <li key={e.id}>
+            {e.hours}h — quality {e.quality}
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
 }

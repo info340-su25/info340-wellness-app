@@ -1,41 +1,42 @@
-import React from 'react';
+import { useState } from "react";
 
 export default function Mood() {
-    return(
-        <>
-            <h1>Log Your Mood</h1>
-            <form>
-                <label for="mood-rating">Mood Rating (1-10)</label>
-                <input
-                type="number"
-                id="mood-rating"
-                name="mood-rating"
-                min="1"
-                max="10"
-                placeholder="e.g. 7"
-                />
+  const [form, setForm] = useState({ mood: "", notes: "" });
+  const [entries, setEntries] = useState([]);
 
-                <label for="mood-description">Mood Description</label>
-                <input
-                type="text"
-                id="mood-description"
-                name="mood-description"
-                placeholder="e.g. Happy, stressed, relaxed"
-                />
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
 
-                <label for="mood-notes">Notes</label>
-                <textarea
-                id="mood-notes"
-                name="mood-notes"
-                placeholder="Additional details about how you feel..."
-                ></textarea>
+  function handleSubmit(e) {
+    e.preventDefault();
+    setEntries([{ id: Date.now(), ...form }, ...entries]);
+    setForm({ mood: "", notes: "" });
+  }
 
-                <label for="mood-date">Date & Time</label>
-                <input type="datetime-local" id="mood-date" name="mood-date" />
+  return (
+    <main>
+      <h1>Mood</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Mood
+          <input name="mood" value={form.mood} onChange={handleChange} />
+        </label>
+        <label>
+          Notes
+          <input name="notes" value={form.notes} onChange={handleChange} />
+        </label>
+        <button>Add</button>
+      </form>
 
-                <button type="submit">Save Mood Log</button>
-                <NavLink to="/Log" className="button">Back</NavLink>
-            </form>
-        </>
-    );
+      <ul>
+        {entries.map((e) => (
+          <li key={e.id}>
+            {e.mood}
+            {e.notes ? ` — ${e.notes}` : ""}
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
 }
