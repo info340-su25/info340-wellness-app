@@ -25,16 +25,16 @@ export default function Diary() {
 
                 <section className="entry-section">
                     <div className="entry-deck">
-                    <div className="entry">
-                        <h3>Morning Walk</h3>
-                        <time datetime="2025-07-13">July 13, 2025</time>
-                        <p>Walked around the neighborhood</p>
-                    </div>
-                    <div className="entry">
-                        <h3>Late Night Workout</h3>
-                        <time datetime="2025-07-14">July 14, 2025</time>
-                        <p>Went to the gym late and worked out</p>
-                    </div>
+                        <div className="entry">
+                            <h3>Morning Walk</h3>
+                            <time datetime="2025-07-13">July 13, 2025</time>
+                            <p>Walked around the neighborhood</p>
+                        </div>
+                        <div className="entry">
+                            <h3>Late Night Workout</h3>
+                            <time datetime="2025-07-14">July 14, 2025</time>
+                            <p>Went to the gym late and worked out</p>
+                        </div>
                     </div>
                 </section>
 
