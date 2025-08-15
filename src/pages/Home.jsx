@@ -5,6 +5,13 @@ export default function Home() {
     { src: "/img/sleep.jpg", alt: "Cozy bed", label: "Sleep" },
   ];
 
+  const renderedElements = ELEMENTS.map((el) => (
+    <div className="element" key={el.label}>
+      <img src={el.src} alt={el.alt} />
+      <p>{el.label}</p>
+    </div>
+  ));
+
   return (
     <div>
       <h1>Welcome to the HuskyHealth Tracker!</h1>
@@ -21,14 +28,7 @@ export default function Home() {
         <h2>How It Works</h2>
         <p>We combine three health elements:</p>
 
-        <div className="elements">
-          {ELEMENTS.map((el) => (
-            <div className="element" key={el.label}>
-              <img src={el.src} alt={el.alt} />
-              <p>{el.label}</p>
-            </div>
-          ))}
-        </div>
+        <div className="elements">{renderedElements}</div>
       </section>
     </div>
   );
