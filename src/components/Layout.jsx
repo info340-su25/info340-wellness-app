@@ -12,6 +12,10 @@ export default function Layout() {
           <NavLink to="/log">Log</NavLink>
           <NavLink to="/streaks">Streaks</NavLink>
           <NavLink to="/diary">Diary</NavLink>
+          
+          <NavLink to="/login" className="login-icon" aria-label="Log in" title="Log in">
+            <img src="/img/account.svg" alt="" width="24" height="24" />
+          </NavLink>
         </div>
       </nav>
 

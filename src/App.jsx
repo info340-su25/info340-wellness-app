@@ -8,10 +8,13 @@ import Sleep from "./pages/Log/Sleep";
 import Diet from "./pages/Log/Diet";
 import Exercise from "./pages/Log/Exercise";
 import Mood from "./pages/Log/Mood";
+import Login from "./pages/Login";
 
 export default function App() {
   return (
     <Routes>
+      <Route path="/login" element={<Login />} />
+      
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
 

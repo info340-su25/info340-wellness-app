@@ -65,6 +65,12 @@ nav {
   color: rgb(78, 23, 125);
 }
 
+#nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem; 
+}
+
 #nav-links a {
   margin-left: 1.25rem;
   text-decoration: none;
@@ -261,6 +267,30 @@ section form {
   vertical-align: -0.1em;
 }
 
+.login-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:36px; height:36px;
+  border-radius:9999px;
+  background: rgb(255, 255, 255); /* purple */
+}
+
+#nav-links a.login-icon,
+#nav-links a.login-icon:hover,
+#nav-links a.login-icon:focus,
+#nav-links a.login-icon:active {
+  border-bottom: 0;      /* cancels your 0.5rem underline */
+  box-shadow: none;       /* in case the hover uses box-shadow underline */
+  transform: none;        /* prevents any movement */
+}
+
+#nav-links a.login-icon{
+  transition: all 0.25s ease-out;
+}
+
+#nav-links a.login-icon:hover{  background-color: #5e2aa6; }
+
 /* ≥ 992 px → 4 columns */
 @media (min-width: 992px) {
   .log-grid {
@@ -271,3 +301,4 @@ section form {
     flex-direction: row;
   }
 }
+
