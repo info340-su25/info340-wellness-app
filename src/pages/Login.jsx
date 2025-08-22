@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Alert } from "react-bootstrap";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -32,14 +33,19 @@ export default function Login() {
       <h1 className="mb-3">Login</h1>
 
       {error && (
-        <div className="alert alert-danger" role="alert" id="login_error">
+        <Alert variant="danger" role="alert" id="login_error" className="mx-3">
           {error}
-        </div>
+        </Alert>
       )}
       {status && (
-        <div className="alert alert-success" role="status" aria-live="polite">
+        <Alert
+          variant="success"
+          role="status"
+          aria-live="polite"
+          className="mx-3"
+        >
           {status}
-        </div>
+        </Alert>
       )}
 
       <div className="row">

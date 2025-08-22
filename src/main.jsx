@@ -2,6 +2,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
 import { initializeApp } from "firebase/app";
 import App from "./App.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 const firebaseConfig = {
