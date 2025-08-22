@@ -4,12 +4,6 @@ import { initializeApp } from "firebase/app";
 import App from "./App.jsx";
 import "./index.css";
 
-createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-);
-
 const firebaseConfig = {
   apiKey: "…",
   authDomain: "…",
@@ -19,3 +13,9 @@ const firebaseConfig = {
 };
 
 initializeApp(firebaseConfig);
+
+createRoot(document.getElementById("root")).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
