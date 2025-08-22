@@ -1,40 +1,103 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getDatabase, ref, push, onValue } from "firebase/database";
 
 export default function Sleep() {
   const [form, setForm] = useState({ hours: "", quality: "" });
   const [entries, setEntries] = useState([]);
+  const [error, setError] = useState(null);
 
-  function handleChange(event) {
-    setForm({ ...form, [event.target.name]: event.target.value });
+  const db = getDatabase();
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    setEntries([{ id: Date.now(), ...form }, ...entries]);
-    setForm({ hours: "", quality: "" });
+  function handleSubmit(e) {
+    e.preventDefault();
+    setError(null);
+
+    const hours = Number(form.hours);
+    const quality = form.quality === "" ? null : Number(form.quality);
+    if (Number.isNaN(hours)) {
+      setError("Please enter hours of sleep.");
+      return;
+    }
+
+    const payload = {
+      hours,
+      quality,
+      createdAt: Date.now(),
+    };
+
+    push(ref(db, "sleep"), payload)
+      .then(() => setForm({ hours: "", quality: "" }))
+      .catch((err) => setError(err.message));
   }
+
+  useEffect(() => {
+    const sleepRef = ref(db, "sleep");
+    return onValue(sleepRef, (snap) => {
+      const data = snap.val() || {};
+      const arr = Object.entries(data).map(([id, v]) => ({ id, ...v }));
+      arr.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+      setEntries(arr);
+    });
+  }, [db]);
 
   return (
     <main>
       <h1>Sleep</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Hours
-          <input name="hours" value={form.hours} onChange={handleChange} />
-        </label>
-        <label>
-          Quality (1-5)
-          <input name="quality" value={form.quality} onChange={handleChange} />
-        </label>
-        <button>Add</button>
+
+      {error && (
+        <p role="alert" className="text-danger" style={{ margin: "0 1rem" }}>
+          {error}
+        </p>
+      )}
+
+      <form onSubmit={handleSubmit} className="half_form" noValidate>
+        <label htmlFor="sleep-hours">Hours</label>
+        <input
+          id="sleep-hours"
+          name="hours"
+          type="number"
+          inputMode="numeric"
+          min={0}
+          max={24}
+          step="0.25"
+          value={form.hours}
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="sleep-quality">Quality (1-5)</label>
+        <input
+          id="sleep-quality"
+          name="quality"
+          type="number"
+          inputMode="numeric"
+          min={1}
+          max={5}
+          step="1"
+          value={form.quality}
+          onChange={handleChange}
+        />
+
+        <button type="submit">Add</button>
       </form>
 
-      <ul>
-        {entries.map((e) => (
-          <li key={e.id}>
-            {e.hours}h — quality {e.quality}
-          </li>
-        ))}
+      <ul aria-live="polite">
+        {entries.map((e) => {
+          const date = e.createdAt
+            ? new Date(e.createdAt).toLocaleDateString()
+            : "";
+          return (
+            <li key={e.id}>
+              {date && `${date}: `}
+              {e.hours}h {e.quality != null && `(q${e.quality})`}
+            </li>
+          );
+        })}
       </ul>
     </main>
   );
