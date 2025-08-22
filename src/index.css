@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -68,7 +74,7 @@ nav {
 #nav-links {
   display: flex;
   align-items: center;
-  gap: 1.25rem; 
+  gap: 1.25rem;
 }
 
 #nav-links a {
@@ -96,6 +102,7 @@ main {
   text-align: center;
   padding-bottom: 5rem;
 }
+
 /* --- LOG HUB GRID --- */
 .log-grid {
   display: grid;
@@ -109,7 +116,6 @@ main {
   .log-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
 .log-card {
@@ -218,10 +224,7 @@ footer {
   background-color: #eadca0;
   text-align: center;
   font-size: 1rem;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 0.5rem 0;
+  padding: 1.25rem 0;
   margin-top: auto;
 }
 
@@ -267,12 +270,13 @@ section form {
   vertical-align: -0.1em;
 }
 
-.login-icon{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:36px; height:36px;
-  border-radius:9999px;
+.login-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
   background: rgb(255, 255, 255); /* purple */
 }
 
@@ -280,16 +284,18 @@ section form {
 #nav-links a.login-icon:hover,
 #nav-links a.login-icon:focus,
 #nav-links a.login-icon:active {
-  border-bottom: 0;      /* cancels your 0.5rem underline */
-  box-shadow: none;       /* in case the hover uses box-shadow underline */
-  transform: none;        /* prevents any movement */
+  border-bottom: 0; /* cancels your 0.5rem underline */
+  box-shadow: none; /* in case the hover uses box-shadow underline */
+  transform: none; /* prevents any movement */
 }
 
-#nav-links a.login-icon{
+#nav-links a.login-icon {
   transition: all 0.25s ease-out;
 }
 
-#nav-links a.login-icon:hover{  background-color: #5e2aa6; }
+#nav-links a.login-icon:hover {
+  background-color: #5e2aa6;
+}
 
 /* ≥ 992 px → 4 columns */
 @media (min-width: 992px) {
@@ -301,4 +307,3 @@ section form {
     flex-direction: row;
   }
 }
-
