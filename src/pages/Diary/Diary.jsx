@@ -8,25 +8,25 @@ export default function Diary() {
   const [diaryTitle, setDiaryTitle] = useState('');
   const [diaryContent, setDiaryContent] = useState([]);
 
-  function diaryElementsCallback(diaryTitle, diaryContent) {
-    setDiaryTitle(diaryTitle);
-    setDiaryContent(diaryContent);
-    let newEntry = {
-      title: diaryTitle,
-      content: diaryContent,
-      date: new Date().toLocaleDateString(),
-      datetime: new Date().toISOString()
+  function diaryElementsCallback(diaryTitle, diaryContent, setAlertMessage) {
+    if (diaryTitle=='' || diaryContent=='') {
+      setAlertMessage("All blanks must be filled!");
+    } else {
+      setAlertMessage(null);
+      setDiaryTitle(diaryTitle);
+      setDiaryContent(diaryContent);
+      let newEntry = {
+        title: diaryTitle,
+        content: diaryContent,
+        date: new Date().toLocaleDateString(),
+        datetime: new Date().toISOString()
+      }
+      setEntries([newEntry, ...entries]);
+      const db = getDatabase();
+      const messageRef = ref(db, "diary/entries");
+      firebasePush(messageRef, newEntry);
     }
-    setEntries([newEntry, ...entries]);
-    const db = getDatabase();
-    const messageRef = ref(db, "diary/entries");
-    firebasePush(messageRef, newEntry);
   }
-
-  // const db = getDatabase();
-  // const messageRef = ref(db, "diaryEntry");
-  // firebaseSet(messageRef, "hello")
-
 
   useEffect(() => {
     const db = getDatabase();
