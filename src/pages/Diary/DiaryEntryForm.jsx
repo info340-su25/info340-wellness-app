@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Alert } from 'react-bootstrap';
 import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue } from "firebase/database";
 
 export default function DiaryEntryForm(props) {
   const [diaryTitle, setDiaryTitle] = useState('');
   const [diaryContent, setDiaryContent] = useState('');
+  const [alertMessage, setAlertMessage] = useState(null);
 
   function handleTitleChange(event) {
     const newTitle = event.target.value;
@@ -16,6 +18,7 @@ export default function DiaryEntryForm(props) {
   }
 
   return (
+    <>
     <section className="form-section">
       <form className="diary-form">
         <h2 className="text-small">Create an Entry</h2>
@@ -39,7 +42,7 @@ export default function DiaryEntryForm(props) {
           aria-label="Submit"
           onClick={(event) => {
             event.preventDefault();
-            props.applyDiaryElementsCallback(diaryTitle, diaryContent);
+            props.applyDiaryElementsCallback(diaryTitle, diaryContent, setAlertMessage);
             setDiaryTitle('');
             setDiaryContent('');
           }}
@@ -47,6 +50,10 @@ export default function DiaryEntryForm(props) {
           Add Entry
         </button>
       </form>
+                {alertMessage &&
+        <Alert variant="danger" dismissible onClose={() => setAlertMessage(null)}>{alertMessage}</Alert>
+      }
     </section>
+    </>
   );
 }
