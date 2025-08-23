@@ -58,8 +58,8 @@ export default function Exercise() {
   });
 
   return (
-    <main>
-      <h1>Exercise</h1>
+    <main className="page-container">
+      <h1 className="page-title">Exercise</h1>
 
       {error && (
         <p role="alert" className="text-danger" style={{ margin: "0 1rem" }}>
