@@ -1,15 +1,48 @@
 import React, { useState } from "react";
 import DiaryEntryForm from "./DiaryEntryForm";
+import DiaryEntryList from "./DiaryEntryList";
+import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue } from "firebase/database";
 
 export default function Diary() {
-  const [diaryTitle, setDiaryTitle] = useState(null);
-  const [diaryContent, setDiaryContent] = useState(null);
+  const [entries, setEntries] = useState([]);
+  const [diaryTitle, setDiaryTitle] = useState('');
+  const [diaryContent, setDiaryContent] = useState([]);
 
   function diaryElementsCallback(diaryTitle, diaryContent) {
     setDiaryTitle(diaryTitle);
     setDiaryContent(diaryContent);
+    let newEntry = {
+      title: diaryTitle,
+      content: diaryContent,
+      date: new Date().toLocaleDateString(),
+      datetime: new Date().toISOString()
+    }
+    setEntries([newEntry, ...entries]);
+    const db = getDatabase();
+    console.log(db);
+    const messageRef = ref(db, "diary");
+    firebasePush(messageRef, newEntry);
+    console.log("done");
   }
 
+  // const db = getDatabase();
+  // const messageRef = ref(db, "diaryEntry");
+  // firebaseSet(messageRef, "hello")
+
+
+  // useEffect(() => {
+  //   const db = getDatabase();
+  //   const allEntriesRef = ref(db, "diaryEntry")
+  //   onValue(allEntriesRef, (snapshot) => {
+  //     const data = snapshot.val();
+  //     const keyArr = Object.keys(data);
+  //     const newArr = keyArray.map((keyString) => {
+  //       const transformed = data[keyString]
+  //       return transformed;
+  //     })
+  //     setEntries(data);
+  //   });
+  // });
   return (
     <>
       <header>
@@ -23,18 +56,7 @@ export default function Diary() {
         <DiaryEntryForm applyDiaryElementsCallback={diaryElementsCallback} />
 
         <section className="entry-section">
-          <div className="entry-deck">
-            <div className="entry">
-              <h3>Morning Walk</h3>
-              <time dateTime="2025-07-13">July 13, 2025</time>
-              <p>Walked around the neighborhood</p>
-            </div>
-            <div className="entry">
-              <h3>Late Night Workout</h3>
-              <time dateTime="2025-07-14">July 14, 2025</time>
-              <p>Went to the gym late and worked out</p>
-            </div>
-          </div>
+          <DiaryEntryList entries={entries}/>
         </section>
 
         <section className="calender-section">

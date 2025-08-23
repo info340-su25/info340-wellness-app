@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue } from "firebase/database";
 
 export default function DiaryEntryForm(props) {
-  const [diaryTitle, setDiaryTitle] = useState(null);
-  const [diaryContent, setDiaryContent] = useState(null);
+  const [diaryTitle, setDiaryTitle] = useState('');
+  const [diaryContent, setDiaryContent] = useState('');
 
   function handleTitleChange(event) {
     const newTitle = event.target.value;
@@ -36,8 +37,11 @@ export default function DiaryEntryForm(props) {
         <button
           type="submit"
           aria-label="Submit"
-          onClick={() => {
+          onClick={(event) => {
+            event.preventDefault();
             props.applyDiaryElementsCallback(diaryTitle, diaryContent);
+            setDiaryTitle('');
+            setDiaryContent('');
           }}
         >
           Add Entry
