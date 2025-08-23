@@ -40,7 +40,7 @@ export default function Diary() {
       })
       setEntries(newArr);
     });
-  });
+  }, []);
 
   return (
     <>
