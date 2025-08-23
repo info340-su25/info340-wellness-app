@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue } from "firebase/database";
 
 export default function Streaks() {
   const [habits, setHabits] = useState([]);
@@ -9,6 +10,10 @@ export default function Streaks() {
   function addHabit(event) {
     event.preventDefault();
 
+    if (!habitName) {
+      return;
+    }
+
     const newHabit = {
       id: Date.now(),
       name: habitName,
@@ -18,16 +23,20 @@ export default function Streaks() {
       lastCompleted: null,
     };
 
-    setHabits([newHabit, ...habits]);
+    const db = getDatabase();
+    const habitsRef = ref(db, "habits");
+    firebasePush(habitsRef, newHabit);
+
+    setHabits([{...newHabit, key: habitsRef.key,}, ...habits]);
     setHabitName("");
     setHabitDescription("");
     setHabitComment("");
   }
 
-  function completeHabit(id) {
+  function completeHabit(key) {
     setHabits(function(prevHabits) {
       return prevHabits.map((habit) => {
-        if (habit.id === id) {
+        if (habit.key === key) {
           const today = new Date().toDateString();
           let newStreak = habit.streak;
 
@@ -35,16 +44,40 @@ export default function Streaks() {
             newStreak = habit.streak + 1;
           }
 
-          return {
+          const newHabit = {
             ...habit,
             streak: newStreak,
             lastCompleted: today,
           };
+
+          const db = getDatabase();
+          const location = "habits/" + key;
+          const habitRef = ref(db, location);
+          firebaseSet(habitRef, newHabit);
+
+          return newHabit;
         }
         return habit;
       })
     });
   }
+
+  useEffect(() => {
+      const db = getDatabase();
+      const allHabitsRef = ref(db, "habits")
+      onValue(allHabitsRef, (snapshot) => {
+        const data = snapshot.val();
+        const keyArr = Object.keys(data);
+        const dbHabits = keyArr.map((keyString) => {
+          const transformed = data[keyString]
+          return {
+            ...transformed,
+            key: keyString,
+          };
+        })
+        setHabits(dbHabits);
+      });
+    }, []);
 
   return (
     <div>
@@ -88,12 +121,12 @@ export default function Streaks() {
         <section className="right-sect">
           <h2>Your Current Streaks</h2>
           {habits.map((habit) => (
-            <div key={habit.id} className="habit">
+            <div key={habit.key} className="habit">
               <h4>{habit.name}</h4>
               <p>{habit.description}</p>
               {habit.comment ? <p><em>{habit.comment}</em></p> : null}
               <p>Streak: {habit.streak}</p>
-              <button type="submit" onClick={() => completeHabit(habit.id)}>Mark Completed Today</button>
+              <button type="submit" onClick={() => completeHabit(habit.key)}>Mark Complete</button>
             </div>
           ))}
         </section>
