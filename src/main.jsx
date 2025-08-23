@@ -6,11 +6,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 const firebaseConfig = {
-  apiKey: "…",
-  authDomain: "…",
-  databaseURL: "https://<your-project-id>.firebaseio.com",
-  projectId: "…",
-  appId: "…",
+  apiKey: "AIzaSyDfTRMll7IlVrvyfphqoQlWeXnPTjeeFno",
+  authDomain: "huskyhealth-tracker.firebaseapp.com",
+  databaseURL: "https://huskyhealth-tracker-default-rtdb.firebaseio.com",
+  projectId: "huskyhealth-tracker",
+  storageBucket: "huskyhealth-tracker.firebasestorage.app",
+  messagingSenderId: "777209560380",
+  appId: "1:777209560380:web:2286c521cd583975bd7239"
 };
 
 initializeApp(firebaseConfig);

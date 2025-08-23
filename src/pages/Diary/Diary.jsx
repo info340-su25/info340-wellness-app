@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DiaryEntryForm from "./DiaryEntryForm";
 import DiaryEntryList from "./DiaryEntryList";
 import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue } from "firebase/database";
@@ -19,10 +19,8 @@ export default function Diary() {
     }
     setEntries([newEntry, ...entries]);
     const db = getDatabase();
-    console.log(db);
-    const messageRef = ref(db, "diary");
+    const messageRef = ref(db, "diary/entries");
     firebasePush(messageRef, newEntry);
-    console.log("done");
   }
 
   // const db = getDatabase();
@@ -30,19 +28,20 @@ export default function Diary() {
   // firebaseSet(messageRef, "hello")
 
 
-  // useEffect(() => {
-  //   const db = getDatabase();
-  //   const allEntriesRef = ref(db, "diaryEntry")
-  //   onValue(allEntriesRef, (snapshot) => {
-  //     const data = snapshot.val();
-  //     const keyArr = Object.keys(data);
-  //     const newArr = keyArray.map((keyString) => {
-  //       const transformed = data[keyString]
-  //       return transformed;
-  //     })
-  //     setEntries(data);
-  //   });
-  // });
+  useEffect(() => {
+    const db = getDatabase();
+    const allEntriesRef = ref(db, "diary/entries")
+    onValue(allEntriesRef, (snapshot) => {
+      const data = snapshot.val();
+      const keyArr = Object.keys(data);
+      const newArr = keyArr.map((keyString) => {
+        const transformed = data[keyString]
+        return transformed;
+      })
+      setEntries(newArr);
+    });
+  });
+
   return (
     <>
       <header>
