@@ -54,8 +54,8 @@ export default function Mood() {
   });
 
   return (
-    <main>
-      <h1>Mood</h1>
+    <main className="page-container">
+      <h1 className="page-title">Mood</h1>
 
       {error && (
         <p role="alert" className="text-danger" style={{ margin: "0 1rem" }}>

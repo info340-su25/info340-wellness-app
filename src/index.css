@@ -326,3 +326,16 @@ section form {
     flex-direction: row;
   }
 }
+
+.page-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  font-family: sans-serif;
+}
+
+.page-title {
+  text-align: center;
+  color: #5B2A86;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
