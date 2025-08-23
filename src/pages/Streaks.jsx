@@ -27,39 +27,45 @@ export default function Streaks() {
     const habitsRef = ref(db, "habits");
     firebasePush(habitsRef, newHabit);
 
-    setHabits([{...newHabit, key: habitsRef.key,}, ...habits]);
     setHabitName("");
     setHabitDescription("");
     setHabitComment("");
   }
 
   function completeHabit(key) {
-    setHabits(function(prevHabits) {
-      return prevHabits.map((habit) => {
-        if (habit.key === key) {
-          const today = new Date().toDateString();
-          let newStreak = habit.streak;
+    const habitArray = habits.filter((habit) => {return habit.key === key});
+    if (habitArray.length === 0) {
+      return;
+    }
+    const habit = habitArray[0];
 
-          if (habit.lastCompleted !== today) {
-            newStreak = habit.streak + 1;
-          }
+    const today = new Date().toDateString();
+    let newStreak = habit.streak;
+    if (habit.lastCompleted !== today) {
+      newStreak = habit.streak + 1;
+    }
 
-          const newHabit = {
-            ...habit,
-            streak: newStreak,
-            lastCompleted: today,
-          };
+    const newHabit = {
+      ...habit, 
+      streak: newStreak, 
+      lastCompleted: today 
+    };
 
-          const db = getDatabase();
-          const location = "habits/" + key;
-          const habitRef = ref(db, location);
-          firebaseSet(habitRef, newHabit);
+    const db = getDatabase();
+    const location = "habits/" + key;
+    const habitRef = ref(db, location);
+    firebaseSet(habitRef, newHabit);
+  }
 
-          return newHabit;
-        }
-        return habit;
-      })
-    });
+  function removeHabit(key) {
+    setHabits((prevHabits) =>
+      prevHabits.filter((habit) => habit.key !== key)
+    );
+
+    const db = getDatabase();
+    const location = "habits/" + key;
+    const habitRef = ref(db, location);
+    firebaseSet(habitRef, null);
   }
 
   useEffect(() => {
@@ -126,7 +132,8 @@ export default function Streaks() {
               <p>{habit.description}</p>
               {habit.comment ? <p><em>{habit.comment}</em></p> : null}
               <p>Streak: {habit.streak}</p>
-              <button type="submit" onClick={() => completeHabit(habit.key)}>Mark Complete</button>
+              <button onClick={() => completeHabit(habit.key)}>Mark Complete</button>
+              <button className="remove-btn" onClick={() => removeHabit(habit.key)}>x</button>
             </div>
           ))}
         </section>
