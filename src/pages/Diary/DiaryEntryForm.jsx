@@ -19,41 +19,41 @@ export default function DiaryEntryForm(props) {
 
   return (
     <>
-    <section className="form-section">
-      <form className="diary-form">
-        <h2 className="text-small">Create an Entry</h2>
-        <label htmlFor="entry-title">Title</label>
-        <input
-          type="text"
-          id="entry-title"
-          name="title"
-          value={diaryTitle}
-          onChange={handleTitleChange}
-        ></input>
-        <label htmlFor="entry-content">Entry</label>
-        <textarea
-          id="entry-content"
-          name="content"
-          value={diaryContent}
-          onChange={handleContentChange}
-        ></textarea>
-        <button
-          type="submit"
-          aria-label="Submit"
-          onClick={(event) => {
-            event.preventDefault();
-            props.applyDiaryElementsCallback(diaryTitle, diaryContent, setAlertMessage);
-            setDiaryTitle('');
-            setDiaryContent('');
-          }}
-        >
-          Add Entry
-        </button>
-      </form>
-                {alertMessage &&
-        <Alert variant="danger" dismissible onClose={() => setAlertMessage(null)}>{alertMessage}</Alert>
-      }
-    </section>
+      <section className="form-section">
+        <form className="diary-form">
+          <h2 className="text-small">Create an Entry</h2>
+          <label htmlFor="entry-title">Title</label>
+          <input
+            type="text"
+            id="entry-title"
+            name="title"
+            value={diaryTitle}
+            onChange={handleTitleChange}
+          ></input>
+          <label htmlFor="entry-content">Entry</label>
+          <textarea
+            id="entry-content"
+            name="content"
+            value={diaryContent}
+            onChange={handleContentChange}
+          ></textarea>
+          <button
+            type="submit"
+            aria-label="Submit"
+            onClick={(event) => {
+              event.preventDefault();
+              props.applyDiaryElementsCallback(diaryTitle, diaryContent, setAlertMessage);
+              setDiaryTitle('');
+              setDiaryContent('');
+            }}
+          >
+            Add Entry
+          </button>
+        </form>
+        {alertMessage &&
+          <Alert variant="danger" dismissible onClose={() => setAlertMessage(null)}>{alertMessage}</Alert>
+        }
+      </section>
     </>
   );
 }

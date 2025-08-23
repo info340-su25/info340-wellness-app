@@ -35,14 +35,30 @@ export default function Diary() {
     const allEntriesRef = ref(db, "diary/entries")
     onValue(allEntriesRef, (snapshot) => {
       const data = snapshot.val();
+      if (!data) {
+      setEntries([]);
+    } else {
       const keyArr = Object.keys(data);
       const newArr = keyArr.map((keyString) => {
         const transformed = data[keyString]
+        transformed.firebaseKey = keyString;
         return transformed;
       })
       setEntries(newArr);
+    }
     });
   }, []);
+
+  function removeEntry(key) {
+      setEntries((prevEntries) =>
+        prevEntries.filter((entry) => entry.firebaseKey !== key)
+      );
+  
+      const db = getDatabase();
+      const allEntriesRef = "diary/entries/" + key;
+      const entriesRef = ref(db, allEntriesRef);
+      firebaseSet(entriesRef, null);
+  }
 
   return (
     <>
@@ -57,7 +73,7 @@ export default function Diary() {
         <DiaryEntryForm applyDiaryElementsCallback={diaryElementsCallback} />
 
         <section className="entry-section">
-          <DiaryEntryList entries={entries}/>
+          <DiaryEntryList entries={entries} removeEntry={removeEntry}/>
         </section>
 
         <section className="calender-section">
