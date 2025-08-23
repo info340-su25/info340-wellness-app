@@ -8,6 +8,8 @@ export default function Diary() {
   const [diaryTitle, setDiaryTitle] = useState('');
   const [diaryContent, setDiaryContent] = useState([]);
 
+  const currentDate = new Date().toLocaleDateString();
+
   function diaryElementsCallback(diaryTitle, diaryContent, setAlertMessage) {
     if (diaryTitle=='' || diaryContent=='') {
       setAlertMessage("All blanks must be filled!");
@@ -60,7 +62,7 @@ export default function Diary() {
 
         <section className="calender-section">
           <div className="calender">
-            <h2>July 2025</h2>
+            <h2>{currentDate}</h2>
           </div>
         </section>
       </div>
